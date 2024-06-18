@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "Inter Thin";
+  src: url("../font/Inter-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Inter Bold";
+  src: url("../font/Inter-Bold.ttf") format("truetype");
+}
+
+:root {
+  --light: "Inter Thin";
+  --bold: "Inter Bold";
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
