@@ -5,6 +5,12 @@
   </head>
   <body>
     <%-include('../components/header'); %>
+    <p>on est sur l'index</p>
+    <form action="/insert-topic">
+      <input type="text" placeholder="Titre du topic" name="titre" />
+      <input type="text" placeholder="Contenu du topic" name="contenu" />
+      <button type="submit">Créer le topic</button>
+    </form>
     <%-include('../components/footer'); %>
   </body>
 </html>

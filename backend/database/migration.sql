@@ -19,7 +19,7 @@ CREATE TABLE topics(
    topic_state VARCHAR(50) NOT NULL,
    topic_message TEXT NOT NULL,
    created_at DATETIME NOT NULL,
-   id_user VARCHAR(10) NOT NULL,
+   id_user INT NOT NULL,
    PRIMARY KEY(topic_id),
    FOREIGN KEY(id_user) REFERENCES users(id_user)
 );
