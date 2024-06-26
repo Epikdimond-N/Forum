@@ -1,0 +1,81 @@
+.cart{
+    width: 60vw;
+    height: 180px;
+    font-family: var(--light);
+    color: var(--bgcolor);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    background-color: var(--bgcolor2);
+}
+
+.titre-topic{
+    /* background-color: red; */
+    width: 95%;
+    height: 40px;
+    font-family: var(--bold);
+    font-size: 1.4em;
+    color: var(--fontColor);
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.ctn-topic{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bgcolor3);
+}
+
+.description-topic{
+    /* background-color: green; */
+    width: 98%;
+    height: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.info-topic{
+    /* background-color: yellow; */
+    width: 90%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.created-by{
+
+}
+
+.created-at{
+
+}
+
+.tags-topic{
+    /* background-color: violet; */
+    width: 90%;
+    height: 30px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.tag{
+    background-color: var(--bgcolor4);
+    color: var(--bordercolor);
+    font-family: var(--bold);
+    width: auto;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    padding: 2px 8px 2px 8px;
+    border-radius: 50px;
+}
