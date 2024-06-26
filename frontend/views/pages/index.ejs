@@ -6,6 +6,7 @@
   </head>
   <body>
     <%-include('../components/header'); %>
+    <main>
     <p>on est sur l'index</p>
     <form action="/insert-topic">
       <input type="text" placeholder="Titre du topic" name="titre" required />
@@ -18,7 +19,14 @@
       <button type="submit">Créer le topic</button>
     </form>
 
+    <%-include('../components/cart_exemple')%>
+
     <%list.data.resultat.forEach((elem)=>{%>
+      <a href="/topicdetail?id=<%=elem.topic_id%>">
+        <%-include('../components/cart')%>
+      </a>
+
+
     <div class="topic-ctn">
       <p><%=elem.topic_title%></p>
       <p><%=elem.topic_message%></p>
@@ -42,6 +50,8 @@
       </form>
     </div>
 
-    <%})%> <%-include('../components/footer'); %>
+    <%})%> 
+    </main>
+    <%-include('../components/footer'); %>
   </body>
 </html>

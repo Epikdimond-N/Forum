@@ -1,16 +1,23 @@
 <div class="cart">
-    <div class="titre-topic">Titre du topic</div>
+    <div class="titre-topic"><%=elem.topic_title%></div>
     <div class="ctn-topic">
-        <div class="description-topic">
-            description du topic, le premier message tronqué 
+        <div class="like-ctn">
+            <div class="upvote">up</div>
+            <div class="score"><%=elem.score_reaction%></div>
+            <div class="downvote">down</div>
         </div>
-        <div class="info-topic">
-            <div class="created-by">created by Epikdiamond</div>
-            <div class="created-at">created at 12:09 25/06/2024</div>
+        <div class="description-ctn">
+            <div class="description-topic">
+                <%=elem.topic_message%>
+            </div>
+            <div class="info-topic">
+                <div class="created-by">created by <%=elem.user_name%></div>
+                <div class="created-at">created at <%=elem.created_at%></div>
+            </div>
         </div>
     </div>
     <div class="tags-topic">
-        <div class="tag">Techno</div>
-        <div class="tag">Electro</div>
-        <div class="tag">Drum&Bass</div>
+        <%list.data.resultat.forEach((elem)=>{%>
+        <div class="tag"><%=elem.tag_label%></div>
+        <%})%>
     </div>
