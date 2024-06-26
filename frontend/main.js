@@ -4,13 +4,16 @@
 const express = require("express");
 const cors = require("cors");
 const boutiqueRoutes = require("./routeur/routes");
+const cookieParser = require("cookie-parser");
 
 //Reglage du serveur
 const app = express();
 app.set("view engine", "ejs");
 app.use("/public/", express.static("assets"));
 app.use(cors());
+app.use(cookieParser());
 app.use(boutiqueRoutes);
+
 
 //Lancement du serveur web
 const port = 3000;
