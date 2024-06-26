@@ -1,11 +1,53 @@
 require("dotenv").config();
 const topic = require("../models/topicModel");
+const jwt = require("jsonwebtoken");
+
+const jwtkey = process.env.JWT_KEY;
 
 exports.InsertTopic = async (req, res) => {
-  console.log("test");
-  console.log(req.body);
-  const resultat = await topic.ModelInsertTopic(req.body);
+  await topic.ModelInsertTopic(req.body);
   res.status(200).send({
-    message: "ca marche wallah",
+    message: "Le topic à bien été ajouté",
+  });
+};
+
+exports.DeleteTopics = async (req, res) => {
+  const topicId = req.params.id;
+  await topic.ModelDeleteTopic(topicId);
+  res.status(200).send({
+    message: "Topic supprimé",
+  });
+};
+
+exports.GetTopics = async (req, res) => {
+  const resultat = await topic.ModelGetTopics();
+  res.status(200).send({
+    message: "Topics récupérés avec succés",
+    resultat: resultat,
+  });
+};
+
+exports.CreateAccount = async (req, res) => {
+  await topic.ModelCreateAccount(req.body);
+  res.status(200).send({
+    message: "Compte crée avec succés",
+  });
+};
+
+exports.GetLogin = async (req, res) => {
+  const toComp = req.body.body;
+  const resultat = await topic.ModelGetLogin();
+  resultat.forEach((account) => {
+    if (
+      account.user_name === toComp.pseudo &&
+      account.user_password === toComp.mdp
+    ) {
+      console.log("Vous êtes connecté");
+      const Token = jwt.sign({ sub: account.id_user }, jwtkey, {
+        expiresIn: "24h",
+      });
+      res.status(200).send({ Token });
+      return;
+    }
   });
 };
