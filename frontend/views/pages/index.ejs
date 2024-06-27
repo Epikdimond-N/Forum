@@ -2,15 +2,56 @@
 <html lang="fr">
   <head>
     <%-include('../components/head'); %>
+    <link rel="stylesheet" href="/public/css/index.css" />
   </head>
   <body>
     <%-include('../components/header'); %>
+    <main>
     <p>on est sur l'index</p>
     <form action="/insert-topic">
-      <input type="text" placeholder="Titre du topic" name="titre" />
-      <input type="text" placeholder="Contenu du topic" name="contenu" />
+      <input type="text" placeholder="Titre du topic" name="titre" required />
+      <input
+        type="text"
+        placeholder="Contenu du topic"
+        name="contenu"
+        required
+      />
       <button type="submit">Créer le topic</button>
     </form>
+
+    <%-include('../components/cart_exemple')%>
+
+    <%list.data.resultat.forEach((elem)=>{%>
+      <a href="/topicdetail?id=<%=elem.topic_id%>">
+        <%-include('../components/cart')%>
+      </a>
+
+
+    <div class="topic-ctn">
+      <p><%=elem.topic_title%></p>
+      <p><%=elem.topic_message%></p>
+      <p><%=elem.created_at%></p>
+
+      <p><%=elem.topic_state%></p>
+      <p><%=elem.user_name%></p>
+      <form action="/delete-topic">
+        <input type="hidden" name="id" value="<%= elem.topic_id %>" />
+        <button type="submit">Supprimer le topic</button>
+      </form>
+      <form action="/archiver-topic">
+        <input type="hidden" name="id" value="<%= elem.topic_id %>" />
+        <button type="submit">Archiver le topic</button>
+      </form>
+      <form action="/like-topic">
+        <button type="submit"></button>
+      </form>
+      <form action="/dislike-topic">
+        <button type="submit"></button>
+      </form>
+    </div>
+
+    <%})%> 
+    </main>
     <%-include('../components/footer'); %>
   </body>
 </html>

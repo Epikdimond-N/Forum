@@ -1,40 +1,57 @@
 <header>
-    <div class="header">
-        <div class="header-left">
-            <div class="header-btn">CREATE TOPIC</div>
-            <div class="header-btn">
-                <p>FAVORIES</p>
-            </div>
-        </div>
-        <div class="header-center">
-            <div class="logo">
-                <img src="public/img/logo_forum.png" alt="">
-            </div>
-        </div>
-        <div class="header-right">
-            <div class="header-btn search-btn">
-                <img src="/public/img/search-icon.png" alt="search_icon">
-                <p>SEARCH</p>
-            </div>
-            <div class="header-btn">
-                <a href="/login">
-                    <img src="/public/img/login-icon.png" alt="login_icon">
-                    <p>LOGIN</p>
-                </a>
-            </div>
-        </div>
+  <div class="header">
+    <div class="header-left">
+      <div class="logo">
+        <a href="/index">
+          <img src="public/img/logo_forum.png" alt="logo_forum" />
+        </a>
+      </div>
     </div>
-    <div class="search">
-        <form action="/searchtreatment" name="search">
-            <input type="text" class="input" placeholder="Search">
-        </form>
+    <div class="header-right">
+      <div class="header-btn">
+        <a href="/newtopic">
+          <img src="/public/img/add_icon.png" alt="add_icon" />
+          <p>CREATE TOPIC</p>
+        </a>
+      </div>
+      <div class="header-btn">
+        <a href="/favoris">
+          <img src="/public/img/heart_icon.png" alt="heart_icon" />
+          <p>FAVORIES</p>
+        </a>
+      </div>
+      <div class="header-btn">
+        <a href="/login">
+          <img src="/public/img/login-icon.png" alt="login_icon" />
+          <p>LOGIN</p>
+        </a>
+      </div>
     </div>
-    <div class="category-ctn">
-        <div class="category-btn">CAT1</div>
-        <div class="category-btn">CAT2</div>
-        <div class="category-btn">CAT3</div>
-        <div class="category-btn">CAT4</div>
-        <div class="category-btn">CAT5</div>
-        <div class="category-btn">CAT6</div>
-    </div>
+  </div>
+  <div class="search">
+    <form action="/searchtreatment" name="search">
+      <img src="/public/img/search-icon.png" alt="" />
+      <input type="text" class="input" placeholder="Search" />
+    </form>
+  </div>
 </header>
+<div class="category-ctn">
+  <a href="/category?id=">
+    <div class="category-btn">CAT1</div>
+  </a>
+  <a href="/category?id=">
+    <div class="category-btn">CAT2</div>
+  </a>
+  <a href="/category?id=">
+    <div class="category-btn">CAT3</div>
+  </a>
+  <a href="/category?id=">
+    <div class="category-btn">CAT4</div>
+  </a>
+  <a href="/category?id=">
+    <div class="category-btn">CAT5</div>
+  </a>
+  <a href="/category?id=">
+    <div class="category-btn">CAT6</div>
+  </a>
+</div>

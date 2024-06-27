@@ -4,7 +4,8 @@ CREATE TABLE users(
    first_name VARCHAR(50) NOT NULL,
    last_name VARCHAR(50) NOT NULL,
    mail_adress VARCHAR(100) NOT NULL,
-   date_of_birth DATETIME NOT NULL,
+   date_of_birth VARCHAR(100) NOT NULL,
+   user_password VARCHAR(200) NOT NULL,
    profil_picture BLOB,
    user_biograpy VARCHAR(200),
    user_statut BOOLEAN NOT NULL,
@@ -18,10 +19,12 @@ CREATE TABLE topics(
    topic_title VARCHAR(50) NOT NULL,
    topic_state VARCHAR(50) NOT NULL,
    topic_message TEXT NOT NULL,
-   created_at DATETIME NOT NULL,
+   created_at VARCHAR(20) NOT NULL,
    id_user INT NOT NULL,
+   user_name VARCHAR(15) NOT NULL,
    PRIMARY KEY(topic_id),
-   FOREIGN KEY(id_user) REFERENCES users(id_user)
+   FOREIGN KEY(id_user) REFERENCES users(id_user),
+   FOREIGN KEY(user_name) REFERENCES users(user_name)
 );
 
 CREATE TABLE tags(
