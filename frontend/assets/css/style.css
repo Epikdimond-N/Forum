@@ -12,6 +12,9 @@
   --light: "Inter Thin";
   --bold: "Inter Bold";
   --bgcolor: #060606;
+  --bgcolor2:#444444c0;
+  --bgcolor3:#8f8f8f;
+  --bgcolor4:#808080;
   --bordercolor: #202020;
   --bordercolor2: #404040;
   --fontColor: #dddddd;
@@ -35,6 +38,7 @@ body {
 main {
   display: flex;
   flex-direction: column;
+  align-items: center;
   color: var(--fontColor);
 }
 
