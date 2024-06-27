@@ -8,11 +8,13 @@
     <%-include('../components/header'); %>
     <main>
       <%list.data.resultat.forEach((elem)=>{%>
-      <a href="/topicdetail?id=<%=elem.topic_id%>">
+
+      <a href="/topic-detail?id=<%=elem.topic_id%>">
         <%-include('../components/cart', {elem})%>
       </a>
 
       <%})%>
+      
     </main>
     <%-include('../components/footer'); %>
   </body>
