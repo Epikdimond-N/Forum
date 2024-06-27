@@ -6,14 +6,11 @@
   </head>
   <body>
     <%-include('../components/header'); %>
-    <main>
-      <%list.data.resultat.forEach((elem)=>{%>
-      <a href="/topicdetail?id=<%=elem.topic_id%>">
-        <%-include('../components/cart', {elem})%>
-      </a>
+    <p style="color: #f00">Vous devez vous connecter pour faire cette action</p>
+    <a style="color: #f00" href="/connect-page"
+      >Aller sur la page de connection</a
+    >
 
-      <%})%>
-    </main>
     <%-include('../components/footer'); %>
   </body>
 </html>

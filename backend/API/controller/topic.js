@@ -5,7 +5,10 @@ const jwt = require("jsonwebtoken");
 const jwtkey = process.env.JWT_KEY;
 
 exports.InsertTopic = async (req, res) => {
-  await topic.ModelInsertTopic(req.body);
+  const token = req.headers.authorization;
+  const decript = jwt.verify(token, jwtkey);
+  const idUser = decript.sub;
+  await topic.ModelInsertTopic(req.body, idUser);
   res.status(200).send({
     message: "Le topic à bien été ajouté",
   });
@@ -21,6 +24,15 @@ exports.DeleteTopics = async (req, res) => {
 
 exports.GetTopics = async (req, res) => {
   const resultat = await topic.ModelGetTopics();
+  res.status(200).send({
+    message: "Topics récupérés avec succés",
+    resultat: resultat,
+  });
+};
+
+exports.GetTopicById = async (req, res) => {
+  const id = req.body.body;
+  const resultat = await topic.ModelGetTopicId(id);
   res.status(200).send({
     message: "Topics récupérés avec succés",
     resultat: resultat,

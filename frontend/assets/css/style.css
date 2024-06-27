@@ -17,7 +17,7 @@
   --bgcolor4:#808080;
   --bordercolor: #202020;
   --bordercolor2: #404040;
-  --fontColor: #DDDDDD;
+  --fontColor: #dddddd;
 }
 
 * {
@@ -25,17 +25,17 @@
   margin: 0;
 }
 
-body{
-  background-color: var(--bgcolor);
-  background-image: url("/public/img/bg_body.png");
-  background-size:auto;
+body {
+  /* background-color: var(--bgcolor); */
+  /* background-image: url("/public/img/bg_body.png"); */
+  background-size: auto;
   background-attachment: fixed;
-  background-repeat:no-repeat;
-  background-position:center ;
+  background-repeat: no-repeat;
+  background-position: center;
   box-sizing: border-box;
 }
 
-main{
+main {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,7 +44,7 @@ main{
   
 }
 
-a{
+a {
   text-decoration: none;
   color: inherit;
 }

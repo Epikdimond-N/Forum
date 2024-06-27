@@ -7,6 +7,7 @@ const middleware = {
 
 routeur.post("/post-topic", middleware.validateToken, controller.InsertTopic);
 routeur.get("/get-topics", controller.GetTopics);
+routeur.post("/get-topic-by-id", controller.GetTopicById);
 routeur.delete("/delete-topic/:id", controller.DeleteTopics);
 
 routeur.post("/create-account", controller.CreateAccount);
