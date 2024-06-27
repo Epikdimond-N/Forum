@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <%-include('../components/head'); %>
+    <link rel="stylesheet" href="/public/css/index.css" />
+  </head>
+  <body>
+    <%-include('../components/header'); %>
+    <div class="topic-ctn">
+      <p><%=kantin[0].topic_title%></p>
+      <p><%=kantin[0].topic_message%></p>
+      <p><%=kantin[0].created_at%></p>
+      <p><%=kantin[0].topic_state%></p>
+      <p><%=kantin[0].user_name%></p>
+    </div>
+    <%-include('../components/footer'); %>
+  </body>
+</html>

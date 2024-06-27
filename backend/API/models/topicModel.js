@@ -1,11 +1,11 @@
 const connection = require("../config/authBDD");
 
-exports.ModelInsertTopic = (topic) => {
+exports.ModelInsertTopic = (topic, id) => {
   return new Promise(async (resolve, reject) => {
-    const sql = `INSERT INTO topics (topic_title, topic_message, topic_state, created_at) VALUES(?,?,?,?)`;
+    const sql = `INSERT INTO topics (topic_title, topic_message, topic_state, created_at, id_user) VALUES(?,?,?,?,?)`;
     connection.query(
       sql,
-      [topic.titre, topic.contenu, topic.etat, topic.date],
+      [topic.titre, topic.contenu, topic.etat, topic.date, id],
       (err, results) => {
         if (err) {
           reject(err);
@@ -38,9 +38,28 @@ exports.ModelGetTopics = () => {
       t.topic_state,
       t.topic_message,
       t.created_at,
+      t.id_user,
       u.user_name
       FROM
       topics t LEFT JOIN users u ON t.id_user = u.id_user`;
+    connection.query(sql, (err, results) =>
+      err ? reject(err) : resolve(results)
+    );
+  });
+};
+
+exports.ModelGetTopicId = (id) => {
+  return new Promise(async (resolve, reject) => {
+    const sql = `SELECT
+      t.topic_id,
+      t.topic_title,
+      t.topic_state,
+      t.topic_message,
+      t.created_at,
+      t.id_user,
+      u.user_name
+      FROM
+      topics t LEFT JOIN users u ON t.id_user = u.id_user WHERE t.topic_id = ${id}`;
     connection.query(sql, (err, results) =>
       err ? reject(err) : resolve(results)
     );
