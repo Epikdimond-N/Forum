@@ -119,3 +119,11 @@ exports.DetailTopic = async (req, res) => {
   };
   res.render("../views/pages/detail-topic", { kantin });
 };
+
+exports.Conditions = async (req, res) => {
+  res.render("../views/pages/conditions")
+}
+
+exports.Politique = async (req, res) => {
+  res.render("../views/pages/politique")
+}

@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    padding: 7px;
+    text-decoration: none;
+    color: #eeeeee;
+    font-size: 1em;
+    font-weight: bold;
+    font-family: var(--bold);
+    display: flex;
+    justify-content: center;
+    text-shadow: purple 1px 0 10px;
+}
+
+h1 {
+    padding: 7px;
+    text-decoration: none;
+    color: #eeeeee;
+    font-weight: bold;
+    font-family: var(--bold);
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    text-shadow: purple 1px 0 10px;
+}
+
+h2 {
+    padding: 7px;
+    text-decoration: none;
+    color: #eeeeee;
+    font-weight: bold;
+    font-family: var(--bold);
+    display: flex;
+    justify-content: center;
+    text-shadow: purple 1px 0 10px;
+}
+
+.flou {
+    border-radius: 20px;
+    border: grey 2px solid;
+    backdrop-filter: blur(20px);
+    margin: 30px;
+}
