@@ -6,6 +6,15 @@
   </head>
   <body>
     <%-include('../components/header'); %>
+    <main>
+      <%-include('../components/signup'); %>
+    </main>
+
+
+
+
+
+
     <p>Créer son compte</p>
     <form action="/create-account">
       <input type="text" placeholder="Nom" name="last_name" required />
@@ -35,6 +44,9 @@
 
     <a href="/connect-page">Se connecter</a>
 
+
+
+    
     <%-include('../components/footer'); %>
   </body>
 </html>
