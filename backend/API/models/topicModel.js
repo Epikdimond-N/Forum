@@ -2,10 +2,27 @@ const connection = require("../config/authBDD");
 
 exports.ModelInsertTopic = (topic, id) => {
   return new Promise(async (resolve, reject) => {
-    const sql = `INSERT INTO topics (topic_title, topic_message, topic_state, created_at, id_user) VALUES(?,?,?,?,?)`;
+    const sql = `INSERT INTO topics (topic_title, topic_message, topic_state, created_at, id_user, topic_categorie) VALUES(?,?,?,?,?,?)`;
     connection.query(
       sql,
-      [topic.titre, topic.contenu, topic.etat, topic.date, id],
+      [topic.titre, topic.contenu, topic.etat, topic.date, id, topic.tag],
+      (err, results) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(results[0]);
+        }
+      }
+    );
+  });
+};
+
+exports.ModelInsertPost = (post, id) => {
+  return new Promise(async (resolve, reject) => {
+    const sql = `INSERT INTO posts (post_content, created_at, id_user, topic_id) VALUES(?,?,?,?)`;
+    connection.query(
+      sql,
+      [post.body.post, post.body.date, id, post.body.id_topic],
       (err, results) => {
         if (err) {
           reject(err);
@@ -39,10 +56,29 @@ exports.ModelGetTopics = () => {
       t.topic_message,
       t.created_at,
       t.id_user,
+      t.topic_categorie,
       u.user_name
       FROM
       topics t LEFT JOIN users u ON t.id_user = u.id_user`;
     connection.query(sql, (err, results) =>
+      err ? reject(err) : resolve(results)
+    );
+  });
+};
+
+exports.ModelGetPosts = (id) => {
+  return new Promise(async (resolve, reject) => {
+    const sql = `SELECT
+      p.post_id,
+      p.post_content,
+      p.created_at,
+      u.user_name
+      FROM
+      posts p LEFT JOIN users u ON p.id_user = u.id_user 
+      LEFT JOIN topics t ON p.topic_id = t.topic_id
+      WHERE t.topic_id = ?`;
+
+    connection.query(sql, id, (err, results) =>
       err ? reject(err) : resolve(results)
     );
   });

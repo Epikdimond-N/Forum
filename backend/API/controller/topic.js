@@ -14,6 +14,16 @@ exports.InsertTopic = async (req, res) => {
   });
 };
 
+exports.InsertPost = async (req, res) => {
+  const token = req.headers.authorization;
+  const decript = jwt.verify(token, jwtkey);
+  const idUser = decript.sub;
+  await topic.ModelInsertPost(req.body, idUser);
+  res.status(200).send({
+    message: "Le post à bien été ajouté",
+  });
+};
+
 exports.DeleteTopics = async (req, res) => {
   const topicId = req.params.id;
   await topic.ModelDeleteTopic(topicId);
@@ -32,10 +42,12 @@ exports.GetTopics = async (req, res) => {
 
 exports.GetTopicById = async (req, res) => {
   const id = req.body.body;
-  const resultat = await topic.ModelGetTopicId(id);
+  const Topic = await topic.ModelGetTopicId(id);
+  const Posts = await topic.ModelGetPosts(id);
   res.status(200).send({
     message: "Topics récupérés avec succés",
-    resultat: resultat,
+    resultat: Topic,
+    posts: Posts,
   });
 };
 

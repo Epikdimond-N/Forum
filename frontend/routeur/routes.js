@@ -9,6 +9,9 @@ routeur.get("/insert-topic", controller.InsertTopic);
 routeur.get("/delete-topic", controller.DeleteTopic);
 routeur.get("/detail-topic/:id", controller.DetailTopic);
 
+routeur.get("/insert-post", controller.InsertPost);
+
+
 routeur.get("/connect-page", controller.ConnectPage);
 routeur.get("/create-account-page", controller.CreateAccountPage);
 routeur.get("/token-not-found", controller.TokenNotFound);

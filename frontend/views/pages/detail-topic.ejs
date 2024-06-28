@@ -6,12 +6,42 @@
   </head>
   <body>
     <%-include('../components/header'); %>
-    <div class="topic-ctn">
-      <p><%=kantin[0].topic_title%></p>
-      <p><%=kantin[0].topic_message%></p>
-      <p><%=kantin[0].created_at%></p>
-      <p><%=kantin[0].topic_state%></p>
-      <p><%=kantin[0].user_name%></p>
+    <div class="topic-ctn" style="background-color: aqua">
+      <p><%=kantin.resultat[0].topic_title%></p>
+      <p><%=kantin.resultat[0].topic_message%></p>
+      <p><%=kantin.resultat[0].created_at%></p>
+      <p><%=kantin.resultat[0].topic_state%></p>
+      <p><%=kantin.resultat[0].user_name%></p>
+    </div>
+    <div class="posts-ctn">
+      <%kantin.posts.forEach(post=>{%>
+      <div
+        class="post-ctn"
+        style="
+          background-color: beige;
+          border: solid 1px black;
+          margin-top: 10px;
+        "
+      >
+        <p><%=post.post_content%></p>
+        <p><%=post.user_name%></p>
+        <p><%=post.created_at%></p>
+      </div>
+
+      <%});%>
+    </div>
+    <div class="add-post">
+      <form action="/insert-post">
+        <input type="text" name="post" required />
+        <input
+          type="text"
+          name="id_topic"
+          value="<%=kantin.resultat[0].topic_id%>"
+          hidden
+          required
+        />
+        <button type="submit">Poster un commentaire</button>
+      </form>
     </div>
     <%-include('../components/footer'); %>
   </body>

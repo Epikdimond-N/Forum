@@ -2,12 +2,37 @@
 <html lang="fr">
   <head>
     <%-include('../components/head'); %>
-    <link rel="stylesheet" href="/public/css/index.css"/>
-    <link rel="stylesheet" href="/public/css/login.css"/>
+    <link rel="stylesheet" href="/public/css/index.css" />
+    <link rel="stylesheet" href="/public/css/login.css" />
   </head>
   <body>
     <main>
-      <%-include('../components/login'); %>
+      <div class="login-ctn">
+        <div class="logo">
+          <a href="/index">
+            <img src="public/img/logo_forum.png" alt="Logo" />
+          </a>
+          <p>SIGN IN</p>
+        </div>
+        <div class="info-ctn">
+          <form action="/login">
+            <div class="info-input">
+              <div class="username-ctn">
+                <label for="username" class="username">Username</label>
+                <input type="text" name="pseudo" />
+              </div>
+              <div class="password-ctn">
+                <label for="password" class="password">Password</label>
+                <input type="password" name="mdp" />
+              </div>
+            </div>
+            <button type="submit">LOGIN</button>
+          </form>
+          <a href="/create-account-page">
+            <div class="new-account">T'es nouveau ? Rejoins nous ici !</div>
+          </a>
+        </div>
+      </div>
     </main>
   </body>
 </html>

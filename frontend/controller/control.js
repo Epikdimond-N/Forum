@@ -54,6 +54,32 @@ exports.InsertTopic = async (req, res) => {
   }
 };
 
+exports.InsertPost = async (req, res) => {
+  if (req.cookies.Token == null) {
+    res.redirect("/token-not-found");
+  } else {
+    const token = req.cookies.Token.Token;
+    let body = req.query;
+    const dateActuelle = new Date();
+    dateActuelle.setHours(dateActuelle.getHours() + 2);
+    let dateFormattee = dateActuelle.toISOString().slice(0, 16);
+    dateFormattee = dateFormattee.replace(new RegExp("T", "g"), " ");
+    body.date = dateFormattee;
+    await axios.post(
+      `${url}/post-post`,
+      { body },
+      {
+        headers: {
+          Authorization: token,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  }
+
+  res.redirect("/index");
+};
+
 exports.CreateAccountPage = async (req, res) => {
   res.render("../views/pages/create-account");
 };
@@ -87,7 +113,9 @@ exports.Login = async (req, res) => {
 exports.DetailTopic = async (req, res) => {
   const body = req.params.id;
   const topic = await axios.post(`${url}/get-topic-by-id`, { body });
-  const kantin = topic.data.resultat;
-  console.log(kantin);
+  const kantin = {
+    resultat: topic.data.resultat,
+    posts: topic.data.posts,
+  };
   res.render("../views/pages/detail-topic", { kantin });
 };

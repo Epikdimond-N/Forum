@@ -9,12 +9,11 @@
     <main>
       <%list.data.resultat.forEach((elem)=>{%>
 
-      <a href="/topic-detail?id=<%=elem.topic_id%>">
+      <a href="/detail-topic/<%=elem.topic_id%>">
         <%-include('../components/cart', {elem})%>
       </a>
 
       <%})%>
-      
     </main>
     <%-include('../components/footer'); %>
   </body>
