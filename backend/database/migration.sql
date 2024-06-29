@@ -22,16 +22,10 @@ CREATE TABLE topics(
    created_at VARCHAR(20) NOT NULL,
    id_user INT NOT NULL,
    user_name VARCHAR(15) NOT NULL,
+   topic_categorie VARCHAR(15) NOT NULL,
    PRIMARY KEY(topic_id),
    FOREIGN KEY(id_user) REFERENCES users(id_user),
    FOREIGN KEY(user_name) REFERENCES users(user_name)
-);
-
-CREATE TABLE tags(
-   tag_id INT AUTO_INCREMENT,
-   tag_label VARCHAR(50) NOT NULL,
-   PRIMARY KEY(tag_id),
-   UNIQUE(tag_label)
 );
 
 CREATE TABLE role(
@@ -44,9 +38,7 @@ CREATE TABLE role(
 CREATE TABLE posts(
    post_id INT AUTO_INCREMENT,
    post_content TEXT NOT NULL,
-   created_at DATETIME NOT NULL,
-   updated_at VARCHAR(50),
-   deleted_at DATETIME,
+   created_at VARCHAR(20) NOT NULL,
    post_picture TEXT,
    post_id_1 INT NOT NULL,
    id_user VARCHAR(10) NOT NULL,
