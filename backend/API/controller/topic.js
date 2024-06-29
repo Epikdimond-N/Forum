@@ -8,6 +8,7 @@ exports.InsertTopic = async (req, res) => {
   const token = req.headers.authorization;
   const decript = jwt.verify(token, jwtkey);
   const idUser = decript.sub;
+  console.log(req.body);
   await topic.ModelInsertTopic(req.body, idUser);
   res.status(200).send({
     message: "Le topic à bien été ajouté",
