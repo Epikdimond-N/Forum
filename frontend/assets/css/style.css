@@ -25,18 +25,20 @@
   margin: 0;
 }
 
+html{
+  box-sizing: border-box;
+  height: 100%;
+}
+
 body {
   background-color: var(--bgcolor);
-  /* background-image: url("/public/img/bg_body.png"); */
-  background-size: cover;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-position: center;
-  box-sizing: border-box;
+  position: relative;
+  box-sizing: inherit;
+  min-height: 100%;
+  padding-bottom: 15vh;
 }
 
 main {
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
