@@ -1,20 +1,33 @@
-form{
-    background-color: green;
+main{
     height: 100%;
-    width: 80%;
+}
+
+.form-main{
+    background-color: var(--bgcolor2);
+    height: 100%;
+    width: 60%;
     display: flex;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 16px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.titre-form{
+    margin: 20px;
+    font-size: 1.6em;
+}
+
+
 label{
     font-family: var(--light);
     font-size: 1.2em;
+    margin: 5px;
 }
 
 .head-form{
-    background-color: red;
     width: 70%;
     display: flex;
     justify-content: space-between;
@@ -57,6 +70,7 @@ select{
 
 .contenu-input{
     width: 70%;
+    margin-top: 30px;
     display: flex;
     flex-direction: column;    
 }
@@ -81,7 +95,7 @@ select{
 button{
     background-color: var(--bgcolor3);
     height: 80px;
-    width: 60%;
+    width: 40%;
     margin-top: 30px;
     border-radius: 15px;
     border: none;
