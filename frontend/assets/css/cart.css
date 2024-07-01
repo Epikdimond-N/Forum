@@ -78,16 +78,16 @@
     align-items: center;
 }
 
-.tag{
-    width: auto;
-    height: 20px;
-    margin: 5px;
-    padding: 2px 8px 2px 8px;
-    border-radius: 50px;
-    font-family: var(--bold);
-    color: var(--bordercolor);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--bgcolor4);
+.tag {
+  width: auto;
+  height: 20px;
+  margin: 5px;
+  padding: 2px 8px 2px 8px;
+  border-radius: 50px;
+  font-family: var(--bold);
+  color: var(--bordercolor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bgcolor4);
 }

@@ -14,4 +14,7 @@ routeur.delete("/delete-topic/:id", controller.DeleteTopics);
 routeur.post("/create-account", controller.CreateAccount);
 routeur.post("/get-login", controller.GetLogin);
 
+routeur.post("/upvote", middleware.validateToken, controller.UpVote);
+routeur.post("/downvote", middleware.validateToken, controller.DownVote);
+
 module.exports = routeur;
