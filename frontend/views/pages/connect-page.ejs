@@ -6,33 +6,68 @@
     <link rel="stylesheet" href="/public/css/login.css" />
   </head>
   <body>
-    <main>
-      <div class="login-ctn">
-        <div class="logo">
-          <a href="/index">
-            <img src="public/img/logo_forum.png" alt="Logo" />
-          </a>
-          <p>SIGN IN</p>
+    <header>
+      <div class="header">
+        <div class="header-left">
+          <div class="logo">
+            <a href="/index">
+              <img src="public/img/logo_forum.png" alt="logo_forum"/>
+            </a>
+          </div>
         </div>
-        <div class="info-ctn">
-          <form action="/login">
-            <div class="info-input">
-              <div class="username-ctn">
-                <label for="username" class="username">Username</label>
-                <input type="text" name="pseudo" />
-              </div>
-              <div class="password-ctn">
-                <label for="password" class="password">Password</label>
-                <input type="password" name="mdp" />
-              </div>
-            </div>
-            <button type="submit">LOGIN</button>
+        <div class="search">
+          <form action="/searchtreatment" name="search">
+            <img src="/public/img/search-icon.png" alt=""/>
+            <input type="text" class="input" placeholder="Search"/>
           </form>
-          <a href="/create-account-page">
-            <div class="new-account">T'es nouveau ? Rejoins nous ici !</div>
-          </a>
+        </div>
+        <div class="header-right">
+          <div class="header-btn">
+            <a href="/create-topic">
+              <img src="/public/img/add_icon.png" alt="add_icon"/>
+              <p>CREATE TOPIC</p>
+            </a>
+          </div>
+          <div class="header-btn">
+            <a href="/favoris">
+              <img src="/public/img/heart_icon.png" alt="heart_icon"/>
+              <p>FAVORIES</p>
+            </a>
+          </div>
+          <div class="header-btn">
+            <a href="/connect-page">
+              <img src="/public/img/login-icon.png" alt="login_icon"/>
+              <p>LOGIN</p>
+            </a>
+          </div>
         </div>
       </div>
+    </header>
+    
+    <main>
+      <div class="login-ctn">
+        <div class="titre">
+            <p>SIGN IN</p>
+        </div>
+        <div class="info-ctn">
+            <form action="/login">
+                <div class="info-input">
+                    <div class="username-ctn">
+                        <label for="username" class="username">Username</label>
+                        <input type="text" name="pseudo">
+                    </div>
+                    <div class="password-ctn">
+                        <label for="password" class="password">Password</label>
+                        <input type="password" name="mdp">
+                    </div>
+                </div>
+                <button type="submit">LOGIN</button>
+            </form>
+            <a href="/create-account-page">
+                <div class="new-account">t'es nouveau ? rejoins nous ici !</div>
+            </a>
+        </div>
+    </div>
     </main>
   </body>
 </html>

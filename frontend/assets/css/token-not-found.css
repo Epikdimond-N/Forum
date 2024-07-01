@@ -1,0 +1,39 @@
+.ctn{
+    background-color: var(--bgcolor2);
+    margin: 50px;
+    height: 40vh;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 16px;
+}
+
+.ctn p{
+    font-size: 1.2em;
+}
+
+.ctn a{
+    background-color: var(--bgcolor3);
+    height: 70px;
+    width: 35%;
+    border-radius: 15px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--bold);
+    font-size: 1.8em;
+}
+
+.ctn a:active{
+    border-radius: 15px;
+    background: var(--bgcolor2);
+    color: var(--bgcolor3);
+}
+
+.ctn img{
+    height: 40px;
+    margin-left: 10px;
+}

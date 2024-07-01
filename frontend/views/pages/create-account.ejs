@@ -3,39 +3,92 @@
   <head>
     <%-include('../components/head'); %>
     <link rel="stylesheet" href="/public/css/index.css" />
+    <link rel="stylesheet" href="/public/css/signup.css" />
   </head>
   <body>
-    <%-include('../components/header'); %>
-
-    <p>Créer son compte</p>
-    <form action="/create-account">
-      <input type="text" placeholder="Nom" name="last_name" required />
-      <input type="text" placeholder="Prenom" name="first_name" required />
-      <input type="email" placeholder="Mail" name="mail_adress" required />
-      <input
-        type="date"
-        placeholder="Date de naissance"
-        name="date_of_birth"
-        required
-      />
-      <input
-        type="text"
-        placeholder="Pseudo"
-        name="user_name"
-        required
-        size="15"
-      />
-      <input
-        type="password"
-        placeholder="Mot de passe"
-        name="user_password"
-        required
-      />
-      <button type="submit">Créer son compte</button>
-    </form>
-
-    <a href="/connect-page">Se connecter</a>
-
-    <%-include('../components/footer'); %>
+    <header>
+      <div class="header">
+        <div class="header-left">
+          <div class="logo">
+            <a href="/index">
+              <img src="public/img/logo_forum.png" alt="logo_forum" />
+            </a>
+          </div>
+        </div>
+        <div class="search">
+          <form action="/searchtreatment" name="search">
+            <img src="/public/img/search-icon.png" alt="" />
+            <input type="text" class="input" placeholder="Search" />
+          </form>
+        </div>
+        <div class="header-right">
+          <div class="header-btn">
+            <a href="/create-topic">
+              <img src="/public/img/add_icon.png" alt="add_icon" />
+              <p>CREATE TOPIC</p>
+            </a>
+          </div>
+          <div class="header-btn">
+            <a href="/favoris">
+              <img src="/public/img/heart_icon.png" alt="heart_icon" />
+              <p>FAVORIES</p>
+            </a>
+          </div>
+          <div class="header-btn">
+            <a href="/connect-page">
+              <img src="/public/img/login-icon.png" alt="login_icon" />
+              <p>LOGIN</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="login-ctn">
+        <div class="titre">
+            <p>SIGN UP</p>
+        </div>
+        <div class="info-ctn">
+            <form action="/create-account">
+              <div class="info-input">
+                <div class="input-left">
+                  <div class="input">
+                    <label for="firstname" class="firstname">First Name</label>
+                    <input type="text" name="first_name" required>
+                  </div>
+                  <div class="input">
+                    <label for="lastname" class="lastname">Last Name</label>
+                    <input type="text" name="last_name" required>
+                  </div>
+                  <div class="input">
+                    <label for="birth" class="birth">Birth</label>
+                    <input type="date" name="date_of_birth" required>
+                  </div>
+                  <div class="input">
+                    <label for="mail" class="mail">Mail</label>
+                    <input type="mail" name="mail_adress" required>
+                  </div>
+                </div>
+                <div class="input-right">
+                  <div class="">
+                  <div class="input">
+                    <label for="username" class="username">Pseudo</label>
+                    <input type="text" name="user_name" required size="15">
+                  </div>
+                  <div class="input">
+                    <label for="password" class="password">Password</label>
+                    <input type="password" name="user_password" required>
+                  </div>
+                  </div>
+                  <button type="submit">SIGN UP</button>
+                </div>  
+              </div>
+            </form>
+            <a href="/connect-page">
+              <div class="new-account">t'as déjà un compte ? connectes toi ici !</div>
+            </a>
+        </div>
+      </div>
+    </main>
   </body>
 </html>

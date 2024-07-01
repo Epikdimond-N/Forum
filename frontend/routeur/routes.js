@@ -21,4 +21,9 @@ routeur.get("/token-not-found", controller.TokenNotFound);
 routeur.get("/create-account", controller.CreateAccount);
 routeur.get("/login", controller.Login);
 
+routeur.get("/conditions", controller.Conditions);
+routeur.get("/politique", controller.Politique);
+routeur.get("/mentions", controller.Mentions);
+routeur.get("/contact", controller.Contact);
+
 module.exports = routeur;

@@ -2,15 +2,18 @@
 <html lang="fr">
   <head>
     <%-include('../components/head'); %>
-    <link rel="stylesheet" href="/public/css/index.css" />
+    <link rel="stylesheet" href="/public/css/token-not-found.css" />
   </head>
   <body>
     <%-include('../components/header'); %>
-    <p style="color: #f00">Vous devez vous connecter pour faire cette action</p>
-    <a style="color: #f00" href="/connect-page"
-      >Aller sur la page de connection</a
-    >
-
+    <main>
+      <div class="ctn">
+        <p>Vous devez vous connecter pour créer un topic</p>
+        <a href="/connect-page">Se connecter 
+          <img src="/public/img/arrow-right.png" alt="arrow_left">
+        </a>
+      </div>
+    </main>
     <%-include('../components/footer'); %>
   </body>
 </html>

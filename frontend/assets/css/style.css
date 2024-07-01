@@ -11,7 +11,7 @@
 :root {
   --light: "Inter Thin";
   --bold: "Inter Bold";
-  --bgcolor: #22252A;
+  --bgcolor: #060606;
   --bgcolor2:#444444c0;
   --bgcolor3:#8f8f8f;
   --bgcolor4:#808080;
@@ -25,18 +25,20 @@
   margin: 0;
 }
 
+html{
+  box-sizing: border-box;
+  height: 100%;
+}
+
 body {
   background-color: var(--bgcolor);
-  background-image: url("/public/img/bg_body.png");
-  background-size: cover;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-position: center;
-  box-sizing: border-box;
+  position: relative;
+  box-sizing: inherit;
+  min-height: 100%;
+  padding-bottom: 15vh;
 }
 
 main {
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
