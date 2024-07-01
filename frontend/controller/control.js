@@ -8,6 +8,31 @@ exports.Index = async (req, res) => {
   res.render("../views/pages/index", { list });
 };
 
+exports.UpVote = async (req, res) => {
+  if (req.cookies.Token == null) {
+    res.redirect("/token-not-found");
+  } else {
+    const token = req.cookies.Token.Token;
+    let body = req.query;
+    await axios.post(
+      `${url}/upvote`,
+      { body },
+      {
+        headers: {
+          Authorization: token,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    res.redirect(`/detail-topic/${body.id_topic}`);
+  }
+};
+
+exports.DownVote = async (req, res) => {
+  const list = await axios.get(`${url}/get-topics`);
+  res.render("../views/pages/index", { list });
+};
+
 exports.CreateTopic = async (req, res) => {
   if (req.cookies.Token == null) {
     res.redirect("/token-not-found");
@@ -75,9 +100,8 @@ exports.InsertPost = async (req, res) => {
         },
       }
     );
+    res.redirect(`/detail-topic/${body.id_topic}`);
   }
-
-  res.redirect("/index");
 };
 
 exports.CreateAccountPage = async (req, res) => {
@@ -107,12 +131,13 @@ exports.Login = async (req, res) => {
     secure: false,
     sameSite: "Lax",
   });
-  res.render("../views/pages/create-account");
+  res.redirect("/index");
 };
 
 exports.DetailTopic = async (req, res) => {
   const body = req.params.id;
   const topic = await axios.post(`${url}/get-topic-by-id`, { body });
+  console.log(topic.data.posts);
   const kantin = {
     resultat: topic.data.resultat,
     posts: topic.data.posts,

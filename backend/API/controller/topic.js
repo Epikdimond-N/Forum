@@ -44,6 +44,7 @@ exports.GetTopicById = async (req, res) => {
   const id = req.body.body;
   const Topic = await topic.ModelGetTopicId(id);
   const Posts = await topic.ModelGetPosts(id);
+  console.log(Posts);
   res.status(200).send({
     message: "Topics récupérés avec succés",
     resultat: Topic,
@@ -73,5 +74,38 @@ exports.GetLogin = async (req, res) => {
       res.status(200).send({ Token });
       return;
     }
+  });
+};
+
+exports.UpVote = async (req, res) => {
+  const toComp = req.body.body;
+  const token = req.headers.authorization;
+  const decript = jwt.verify(token, jwtkey);
+  const id = decript.sub;
+  const list = await topic.ModelGetVotes();
+  list.forEach((post) => {
+    if (post.post_id === toComp.topic_id) {
+      topic.ModelUpdatePostLike(post.post_id);
+      res.status(200).send({
+        message: "Post liké",
+      });
+      return;
+    }
+  });
+
+  await topic.ModelUpVote(toComp.id_post, id);
+  res.status(200).send({
+    message: "Post liké",
+  });
+};
+
+exports.DownVote = async (req, res) => {
+  const toComp = req.body.body;
+  const token = req.headers.authorization;
+  const decript = jwt.verify(token, jwtkey);
+  const id = decript.sub;
+  await topic.ModelDownVote(toComp, id);
+  res.status(200).send({
+    message: "Post disliké",
   });
 };
