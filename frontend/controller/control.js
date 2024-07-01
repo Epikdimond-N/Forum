@@ -127,3 +127,11 @@ exports.Conditions = async (req, res) => {
 exports.Politique = async (req, res) => {
   res.render("../views/pages/politique")
 }
+
+exports.Mentions = async (req, res) => {
+  res.render("../views/pages/mentions")
+}
+
+exports.Contact = async  (req, res) => {
+  res.render("../views/pages/contact")
+}
