@@ -6,6 +6,9 @@
   </head>
   <body>
     <%-include('../components/header'); %>
+    
+
+
     <div class="topic-ctn" style="background-color: aqua">
       <p><%=kantin.resultat[0].topic_title%></p>
       <p><%=kantin.resultat[0].topic_message%></p>
@@ -26,6 +29,35 @@
         <p><%=post.post_content%></p>
         <p><%=post.user_name%></p>
         <p><%=post.created_at%></p>
+        <div class="score-ctn">
+          <form action="/upvote">
+            <input
+              type="text"
+              name="id_topic"
+              value="<%=kantin.resultat[0].topic_id%>"
+              hidden
+              required
+            />
+            <input name="id_post" value="<%=post.post_id%>" hidden />
+            <button class="upvote">Up vote</button>
+          </form>
+          <% if(post.score_reaction === null){%>
+          <p class="score">0</p>
+          <%}else{%>
+          <p class="score"><%=post.score_reaction%></p>
+          <%};%>
+          <form action="/downvote">
+            <input
+              type="text"
+              name="id_topic"
+              value="<%=kantin.resultat[0].topic_id%>"
+              hidden
+              required
+            />
+            <input name="id_post" value="<%=post.post_id%>" hidden />
+            <button class="downvote">Down vote</button>
+          </form>
+        </div>
       </div>
 
       <%});%>

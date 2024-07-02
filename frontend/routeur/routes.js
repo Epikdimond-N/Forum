@@ -11,6 +11,8 @@ routeur.get("/detail-topic/:id", controller.DetailTopic);
 
 routeur.get("/insert-post", controller.InsertPost);
 
+routeur.get("/upvote", controller.UpVote);
+routeur.get("/downvote", controller.DownVote);
 
 routeur.get("/connect-page", controller.ConnectPage);
 routeur.get("/create-account-page", controller.CreateAccountPage);

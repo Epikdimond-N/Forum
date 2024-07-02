@@ -22,7 +22,7 @@ CREATE TABLE topics(
    created_at VARCHAR(20) NOT NULL,
    id_user INT NOT NULL,
    user_name VARCHAR(15) NOT NULL,
-   topic_categorie VARCHAR(15) NOT NULL,
+   topic_categorie VARCHAR(20) NOT NULL,
    PRIMARY KEY(topic_id),
    FOREIGN KEY(id_user) REFERENCES users(id_user),
    FOREIGN KEY(user_name) REFERENCES users(user_name)
@@ -43,18 +43,12 @@ CREATE TABLE posts(
    post_id_1 INT NOT NULL,
    id_user VARCHAR(10) NOT NULL,
    topic_id INT NOT NULL,
+   score_reaction INT NOT NULL,
    PRIMARY KEY(post_id),
    FOREIGN KEY(post_id_1) REFERENCES posts(post_id),
    FOREIGN KEY(id_user) REFERENCES users(id_user),
+   FOREIGN KEY(score_reaction) REFERENCES reaction_post(score_reaction),
    FOREIGN KEY(topic_id) REFERENCES topics(topic_id)
-);
-
-CREATE TABLE topic_tag(
-   topic_id INT,    
-   tag_id INT,
-   PRIMARY KEY(topic_id, tag_id),
-   FOREIGN KEY(topic_id) REFERENCES topics(topic_id),
-   FOREIGN KEY(tag_id) REFERENCES tags(tag_id)
 );
 
 CREATE TABLE reaction_post(

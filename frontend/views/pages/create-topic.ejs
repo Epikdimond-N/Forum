@@ -7,7 +7,8 @@
   <body>
     <%-include('../components/header'); %>
     <main>
-      <form action="/insert-topic">
+      <form class="form-main" action="/insert-topic">
+        <div class="titre-form">Posez votre question, exprimez vous sur un sujet : </div>
         <div class="head-form">
           <div class="titre-input">
           <label for="titre">Titre du Topic</label>
@@ -46,7 +47,7 @@
           <textarea name="contenu" id="" required></textarea>
         </div>
         
-        <button type="submit">Créer le topic</button>
+        <button type="submit">Créer mon topic</button>
 
       </form>
     </main>
