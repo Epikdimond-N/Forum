@@ -6,7 +6,6 @@ CREATE TABLE users(
    mail_adress VARCHAR(100) NOT NULL,
    date_of_birth VARCHAR(100) NOT NULL,
    user_password VARCHAR(200) NOT NULL,
-   profil_picture BLOB,
    user_biograpy VARCHAR(200),
    user_statut BOOLEAN NOT NULL,
    PRIMARY KEY(id_user),

@@ -8,6 +8,12 @@ exports.Index = async (req, res) => {
   res.render("../views/pages/index", { list });
 };
 
+exports.Cat = async (req, res) => {
+  const cat = req.query.id;
+  const list = await axios.post(`${url}/get-topics-by-cat`, { cat });
+  res.render("../views/pages/index", { list });
+};
+
 exports.UpVote = async (req, res) => {
   if (req.cookies.Token == null) {
     res.redirect("/token-not-found");
@@ -29,8 +35,23 @@ exports.UpVote = async (req, res) => {
 };
 
 exports.DownVote = async (req, res) => {
-  const list = await axios.get(`${url}/get-topics`);
-  res.render("../views/pages/index", { list });
+  if (req.cookies.Token == null) {
+    res.redirect("/token-not-found");
+  } else {
+    const token = req.cookies.Token.Token;
+    let body = req.query;
+    await axios.post(
+      `${url}/downvote`,
+      { body },
+      {
+        headers: {
+          Authorization: token,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    res.redirect(`/detail-topic/${body.id_topic}`);
+  }
 };
 
 exports.CreateTopic = async (req, res) => {
@@ -125,19 +146,22 @@ exports.CreateAccount = async (req, res) => {
 exports.Login = async (req, res) => {
   const body = req.query;
   const test = await axios.post(`${url}/get-login`, { body });
-  res.cookie("Token", test.data, {
-    maxAge: 24 * 60 * 60 * 1000,
-    httpOnly: true,
-    secure: false,
-    sameSite: "Lax",
-  });
-  res.redirect("/index");
+  if (test.data.message === "Creation compte requise") {
+    res.redirect("/create-account-page");
+  } else {
+    res.cookie("Token", test.data, {
+      maxAge: 24 * 60 * 60 * 1000,
+      httpOnly: true,
+      secure: false,
+      sameSite: "Lax",
+    });
+    res.redirect("/index");
+  }
 };
 
 exports.DetailTopic = async (req, res) => {
   const body = req.params.id;
   const topic = await axios.post(`${url}/get-topic-by-id`, { body });
-  console.log(topic.data.posts);
   const kantin = {
     resultat: topic.data.resultat,
     posts: topic.data.posts,
@@ -146,17 +170,17 @@ exports.DetailTopic = async (req, res) => {
 };
 
 exports.Conditions = async (req, res) => {
-  res.render("../views/pages/conditions")
-}
+  res.render("../views/pages/conditions");
+};
 
 exports.Politique = async (req, res) => {
-  res.render("../views/pages/politique")
-}
+  res.render("../views/pages/politique");
+};
 
 exports.Mentions = async (req, res) => {
-  res.render("../views/pages/mentions")
-}
+  res.render("../views/pages/mentions");
+};
 
-exports.Contact = async  (req, res) => {
-  res.render("../views/pages/contact")
-}
+exports.Contact = async (req, res) => {
+  res.render("../views/pages/contact");
+};
