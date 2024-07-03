@@ -1,80 +1,78 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <%-include('../components/head'); %>
-    <link rel="stylesheet" href="/public/css/index.css" />
-  </head>
-  <body>
-    <%-include('../components/header'); %>
-    
-
-
-    <div class="topic-ctn" style="background-color: aqua">
-      <p><%=kantin.resultat[0].topic_title%></p>
-      <p><%=kantin.resultat[0].topic_message%></p>
-      <p><%=kantin.resultat[0].created_at%></p>
-      <p><%=kantin.resultat[0].topic_state%></p>
-      <p><%=kantin.resultat[0].user_name%></p>
-    </div>
-    <div class="posts-ctn">
-      <%kantin.posts.forEach(post=>{%>
-      <div
-        class="post-ctn"
-        style="
-          background-color: beige;
-          border: solid 1px black;
-          margin-top: 10px;
-        "
-      >
-        <p><%=post.post_content%></p>
-        <p><%=post.user_name%></p>
-        <p><%=post.created_at%></p>
-        <div class="score-ctn">
-          <form action="/upvote">
-            <input
-              type="text"
-              name="id_topic"
-              value="<%=kantin.resultat[0].topic_id%>"
-              hidden
-              required
-            />
-            <input name="id_post" value="<%=post.post_id%>" hidden />
-            <button class="upvote">Up vote</button>
-          </form>
-          <% if(post.score_reaction === null){%>
-          <p class="score">0</p>
-          <%}else{%>
-          <p class="score"><%=post.score_reaction%></p>
-          <%};%>
-          <form action="/downvote">
-            <input
-              type="text"
-              name="id_topic"
-              value="<%=kantin.resultat[0].topic_id%>"
-              hidden
-              required
-            />
-            <input name="id_post" value="<%=post.post_id%>" hidden />
-            <button class="downvote">Down vote</button>
-          </form>
-        </div>
-      </div>
-
-      <%});%>
-    </div>
-    <div class="add-post">
-      <form action="/insert-post">
-        <input type="text" name="post" required />
-        <input
-          type="text"
-          name="id_topic"
-          value="<%=kantin.resultat[0].topic_id%>"
-          hidden
-          required
-        />
-        <button type="submit">Poster un commentaire</button>
-      </form>
-    </div>
-    <%-include('../components/footer'); %>
-  </body>
+    <head>
+        <%-include('../components/head'); %>
+        <link rel="stylesheet" href="/public/css/detail-topic.css" />
+    </head>
+    <body>
+        <%-include('../components/header'); %>
+        <main>
+            <div class="container">
+                <div class="ctn-topic">
+                    <div class="header-topic">
+                        <p><%=kantin.resultat[0].topic_title%></p>
+                    </div>
+                    <div class="bloc-topic">
+                        <div class="body-topic">
+                            <div class="message-topic">
+                                <p><%=kantin.resultat[0].topic_message%></p>
+                            </div>
+                            <div class="footer-topic">
+                                <p>
+                                    Créer par <%=kantin.resultat[0].user_name%>
+                                    le <%=kantin.resultat[0].created_at%>
+                                </p>
+                                <p>
+                                    Etat du topic :
+                                    <%=kantin.resultat[0].topic_state%>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <%kantin.posts.forEach(post=>{%>
+                <div class="ctn-post">
+                    <div class="score">
+                        <form action="/upvote">
+                            <input type="text" name="id_topic" value="<%=kantin.resultat[0].topic_id%>" hidden required />
+                            <input name="id_post" value="<%=post.post_id%>" hidden/>
+                            <button class="upvote"><img class="up-vote" src="/public/img/arrow-right.png" alt="arrow-up"></button>
+                        </form>
+                        <% if(post.score_reaction === null){%>
+                        <p class="score">0</p>
+                        <%}else{%>
+                        <p class="score"><%=post.score_reaction%></p>
+                        <%};%>
+                        <form action="/downvote">
+                            <input type="text" name="id_topic" value="<%=kantin.resultat[0].topic_id%>" hidden required/>
+                            <input name="id_post" value="<%=post.post_id%>" hidden />
+                            <button class="downvote"><img class="down-vote" src="/public/img/arrow-right.png" alt="arrow_down"></button>
+                        </form>
+                    </div>
+                    <div class="main-post">
+                        <div class="message-post">
+                            <p><%=post.post_content%></p>
+                        </div>
+                        <div class="footer-topic">
+                            <p>Message de <%=post.user_name%></p>
+                            <p><%=post.created_at%></p>
+                        </div>
+                    </div>
+                </div>
+                <%});%>
+                <div class="ctn-new-post">
+                    <div class="blank-new-post">
+                    </div>
+                    <div class="add-post">
+                        <form action="/insert-post">
+                            <textarea type="text" name="post" required></textarea>
+                            <input type="text" name="id_topic" value="<%=kantin.resultat[0].topic_id%>" hidden required />
+                            <button type="submit">Poster un commentaire</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <%-include('../components/footer'); %>
+    </body>
 </html>
