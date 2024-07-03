@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <%-include('../components/head'); %>
+    <link rel="stylesheet" href="/public/css/index.css" />
+  </head>
+  <body>
+    <%-include('../components/header'); %>
+    <main>
+      <%list.data.resultat.forEach((elem)=>{%>
+
+      <a href="/detail-topic/<%=elem.topic_id%>">
+        <%-include('../components/cart', {elem})%>
+      </a>
+
+      <%})%>
+    </main>
+    <%-include('../components/footer'); %>
+  </body>
+</html>

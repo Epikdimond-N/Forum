@@ -41,11 +41,19 @@ exports.GetTopics = async (req, res) => {
   });
 };
 
+exports.GetTopicsByCat = async (req, res) => {
+  const cat = req.body.cat;
+  const resultat = await topic.ModelGetTopicsByCat(cat);
+  res.status(200).send({
+    message: "Topics récupérés avec succés",
+    resultat: resultat,
+  });
+};
+
 exports.GetTopicById = async (req, res) => {
   const id = req.body.body;
   const Topic = await topic.ModelGetTopicId(id);
   const Posts = await topic.ModelGetPosts(id);
-  console.log(Posts);
   res.status(200).send({
     message: "Topics récupérés avec succés",
     resultat: Topic,
@@ -76,6 +84,9 @@ exports.GetLogin = async (req, res) => {
       return;
     }
   });
+  res.status(200).send({
+    message: "Creation compte requise",
+  });
 };
 
 exports.UpVote = async (req, res) => {
@@ -105,8 +116,19 @@ exports.DownVote = async (req, res) => {
   const token = req.headers.authorization;
   const decript = jwt.verify(token, jwtkey);
   const id = decript.sub;
-  await topic.ModelDownVote(toComp, id);
+  const list = await topic.ModelGetVotes();
+  list.forEach((post) => {
+    if (post.post_id === toComp.topic_id) {
+      topic.ModelUpdatePostDislike(post.post_id);
+      res.status(200).send({
+        message: "Post liké",
+      });
+      return;
+    }
+  });
+
+  await topic.ModelDownVote(toComp.id_post, id);
   res.status(200).send({
-    message: "Post disliké",
+    message: "Post liké",
   });
 };

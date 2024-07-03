@@ -66,6 +66,26 @@ exports.ModelGetTopics = () => {
   });
 };
 
+exports.ModelGetTopicsByCat = (cat) => {
+  return new Promise(async (resolve, reject) => {
+    const sql = `SELECT
+      t.topic_id,
+      t.topic_title,
+      t.topic_state,
+      t.topic_message,
+      t.created_at,
+      t.id_user,
+      t.topic_categorie,
+      u.user_name
+      FROM
+      topics t LEFT JOIN users u ON t.id_user = u.id_user
+      WHERE t.topic_categorie = ?`;
+    connection.query(sql, cat, (err, results) =>
+      err ? reject(err) : resolve(results)
+    );
+  });
+};
+
 exports.ModelGetPosts = (id) => {
   return new Promise(async (resolve, reject) => {
     const sql = `SELECT
@@ -162,7 +182,26 @@ exports.ModelUpVote = (addlike, id) => {
   });
 };
 
+exports.ModelDownVote = (addlike, id) => {
+  console.log(addlike);
+  return new Promise(async (resolve, reject) => {
+    const sql = `INSERT INTO reaction_post (id_user, post_id, nb_dislike, score_reaction) VALUES(?,?,?,?)`;
+    connection.query(sql, [id, addlike, 1, -1], (err, results) =>
+      err ? reject(err) : resolve(results)
+    );
+  });
+};
+
 exports.ModelUpdatePostLike = (id) => {
+  return new Promise(async (resolve, reject) => {
+    const sql = `UPDATE reaction_post SET score_reaction = score_reaction + 1 WHERE post_id = ?`;
+    connection.query(sql, id, (err, results) =>
+      err ? reject(err) : resolve(results)
+    );
+  });
+};
+
+exports.ModelUpdatePostDislike = (id) => {
   return new Promise(async (resolve, reject) => {
     const sql = `UPDATE reaction_post SET score_reaction = score_reaction + 1 WHERE post_id = ?`;
     connection.query(sql, id, (err, results) =>
