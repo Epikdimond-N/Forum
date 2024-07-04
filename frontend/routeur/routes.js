@@ -8,6 +8,7 @@ routeur.get("/create-topic", controller.CreateTopic);
 routeur.get("/insert-topic", controller.InsertTopic);
 routeur.get("/delete-topic", controller.DeleteTopic);
 routeur.get("/detail-topic/:id", controller.DetailTopic);
+routeur.get("/category", controller.Cat);
 
 routeur.get("/insert-post", controller.InsertPost);
 

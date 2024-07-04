@@ -17,7 +17,7 @@
 .ctn a{
     background-color: var(--bgcolor3);
     height: 70px;
-    width: 35%;
+    width: 50%;
     border-radius: 15px;
     border: none;
     display: flex;
